@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        iconTheme: IconThemeData(color: Color.fromRGBO(40, 40, 40, 1)),
+        appBarTheme: AppBarTheme(
+            elevation: 1,
+            color: Colors.white,
+            iconTheme: IconThemeData(color: Color.fromRGBO(40, 40, 40, 1))),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -33,49 +39,75 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- int currentPage=0;
+  int currentPage = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: HomePage(),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.home, color: currentPage ==0 ? Color.fromRGBO(203, 73, 101, 1):Color.fromRGBO(40, 40, 40, 1)),
-              onPressed: () {setState(() {
-                currentPage = 0;
-              });},
+              icon: Icon(Icons.home,
+                  color: currentPage == 0
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 0;
+                });
+              },
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.search,color: currentPage ==1 ? Color.fromRGBO(203, 73, 101, 1):Color.fromRGBO(40, 40, 40, 1)),
-              onPressed: () {setState(() {
-                currentPage = 1;
-              });},
+              icon: Icon(Icons.search,
+                  color: currentPage == 1
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 1;
+                });
+              },
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.ondemand_video,color: currentPage ==2 ? Color.fromRGBO(203, 73, 101, 1):Color.fromRGBO(40, 40, 40, 1)),
-              onPressed: () {setState(() {
-                currentPage = 2;
-              });},
+              icon: Icon(Icons.ondemand_video,
+                  color: currentPage == 2
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 2;
+                });
+              },
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.card_travel,color: currentPage ==3 ? Color.fromRGBO(203, 73, 101, 1):Color.fromRGBO(40, 40, 40, 1)),
-              onPressed: () {setState(() {
-                currentPage = 3;
-              });},
+              icon: Icon(Icons.card_travel,
+                  color: currentPage == 3
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 3;
+                });
+              },
             ),
-            Spacer(),
+            const Spacer(),
             IconButton(
-              icon: Icon(Icons.person,color: currentPage ==4 ? Color.fromRGBO(203, 73, 101, 1):Color.fromRGBO(40, 40, 40, 1)),
-              onPressed: () {setState(() {
-                currentPage = 4;
-              });},
+              icon: Icon(Icons.person,
+                  color: currentPage == 4
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 4;
+                });
+              },
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),
