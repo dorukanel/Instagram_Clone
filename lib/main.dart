@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+import 'login_screen.dart';
+import 'signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +16,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        iconTheme: IconThemeData(color: Color.fromRGBO(40, 40, 40, 1)),
-        appBarTheme: AppBarTheme(
+        iconTheme: const IconThemeData(color: Color.fromRGBO(40, 40, 40, 1)),
+        appBarTheme: const AppBarTheme(
             elevation: 1,
             color: Colors.white,
             iconTheme: IconThemeData(color: Color.fromRGBO(40, 40, 40, 1))),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: "lale"), // title parametresini ekliyoruz
+      initialRoute: '/home',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/signup': (context) => const SignUpScreen(),
+        '/home': (context) => const MyHomePage(title: "Home"),
+      },
+
+     // home: const MyHomePage(title: "lale"), // title
     );
   }
 }
@@ -30,9 +39,9 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage(
       {super.key,
-      required this.title}); // title parametresini constructor'a ekliyoruz
+      required this.title}); // title added to constructor
 
-  final String title; // title'ı bir instance değişkeni olarak tanımlıyoruz
+  final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();

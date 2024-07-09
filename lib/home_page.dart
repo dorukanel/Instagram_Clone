@@ -77,7 +77,6 @@ class _HomePageState extends State<HomePage> {
             children: List.generate(
               8,
               (index) => Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //Header Post
                   Row(
