@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'login_screen.dart';
-import 'signup_screen.dart';
+import 'pages/home_page.dart';
+import 'pages/login_screen.dart';
+import 'pages/signup_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // bunsuz 8928312 tane hata  veriyor
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -26,8 +33,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/': (context) => const LoginScreen(),
-        '/signup': (context) => const SignUpScreen(),
+        '/': (context) =>  LoginScreen(),
+        '/signup': (context) =>  Signup(),
         '/home': (context) => const MyHomePage(title: "Home"),
       },
 

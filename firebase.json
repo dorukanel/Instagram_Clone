@@ -1,0 +1,10 @@
+{"flutter":
+{"platforms":{
+  "android":{"default":{
+    "projectId":"instagramclone-ed418","appId":"1:971570699304:android:e934b67da0cfee998b291d",
+  "fileOutput":"android/app/google-services.json"}
+},
+  "dart":{"lib/firebase_options.dart":{"projectId":"instagramclone-ed418",
+  "configurations":{"android":"1:971570699304:android:e934b67da0cfee998b291d",
+    "ios":"1:971570699304:ios:8cd47ef6dc3be82b8b291d","macos":"1:971570699304:ios:8cd47ef6dc3be82b8b291d",
+    "web":"1:971570699304:web:f8aec9484622d0f98b291d","windows":"1:971570699304:web:59d6216430eaa6008b291d"}}}}}}

@@ -7,27 +7,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<String> profileImages = [
-    "images/1.jpg",
-    "images/2.jpg",
-    "images/3.jpg",
-    "images/4.jpg",
-    "images/5.jpg",
-    "images/6.jpg",
-    "images/7.jpg",
-    "images/8.jpg",
-    "images/9.jpg",
-    "images/10.jpg"
+    "assets/images/1.jpg",
+    "assets/images/2.jpg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/5.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
+    "assets/images/9.jpg",
+    "assets/images/10.jpg"
   ];
   List<String> posts = [
-    "images/post_1.jpg",
-    "images/post_2.jpg",
-    "images/post_3.jpg",
-    "images/post_4.jpg",
-    "images/post_6.jpg",
-    "images/post_7.jpg",
-    "images/post_8.jpg",
-    "images/post_9.jpg",
-    "images/post_10.jpg"
+    "assets/images/post_1.jpg",
+    "assets/images/post_2.jpg",
+    "assets/images/post_3.jpg",
+    "assets/images/post_4.jpg",
+    "assets/images/post_6.jpg",
+    "assets/images/post_7.jpg",
+    "assets/images/post_8.jpg",
+    "assets/images/post_9.jpg",
+    "assets/images/post_10.jpg"
   ];
   Future<void> onRefresh()async{
     await Future.delayed(Duration(seconds: 1));
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Image.asset("images/insta_title.png", height: 200, width: 150),
+          title: Image.asset("assets/images/insta_title.png", height: 200, width: 150),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle_outline)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(children: [
                         CircleAvatar(
                             radius: 50,
-                            backgroundImage: const AssetImage("images/story.jpg"),
+                            backgroundImage: const AssetImage("assets/images/story.jpg"),
                             child: CircleAvatar(
                               radius: 44,
                               backgroundImage: AssetImage(profileImages[index]),
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(10),
                         child: CircleAvatar(
                             radius: 30,
-                            backgroundImage: const AssetImage("images/story.jpg"),
+                            backgroundImage: const AssetImage("assets/images/story.jpg"),
                             child: CircleAvatar(
                               radius: 24,
                               backgroundImage: AssetImage(profileImages[index]),
