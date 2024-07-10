@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:sample/pages/profile_page.dart';
 class HomePage extends StatefulWidget {
+
+  //final String title ;
   @override
   State<HomePage> createState() => _HomePageState();
+   HomePage(
+      {super.key}); // title added to constructor
+
+
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int currentPage = 0;
   List<String> profileImages = [
     "assets/images/1.jpg",
     "assets/images/2.jpg",
@@ -156,7 +164,80 @@ class _HomePageState extends State<HomePage> {
             ),
           )
         ],
-      ))),
+      )
+     )
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: [
+            const Spacer(),
+            IconButton(
+              icon: Icon(Icons.home,
+                  color: currentPage == 0
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 0;
+                });
+              },
+            ),
+            const Spacer(),
+            IconButton(
+              icon: Icon(Icons.search,
+                  color: currentPage == 1
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 1;
+                });
+              },
+            ),
+            const Spacer(),
+            IconButton(
+              icon: Icon(Icons.ondemand_video,
+                  color: currentPage == 2
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 2;
+                });
+              },
+            ),
+            const Spacer(),
+            IconButton(
+              icon: Icon(Icons.card_travel,
+                  color: currentPage == 3
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 3;
+                });
+              },
+            ),
+            const Spacer(),
+            IconButton(
+              icon: Icon(Icons.person,
+                  color: currentPage == 4
+                      ? const Color.fromRGBO(203, 73, 101, 1)
+                      : const Color.fromRGBO(40, 40, 40, 1)),
+              onPressed: () {
+                setState(() {
+                  currentPage = 4;
+                });
+                // Navigate to the ProfilePage
+                if (currentPage == 4) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                }
+              },
+            ),
+            const Spacer(),
+          ],
+        ),
+      ),
     );
   }
 }

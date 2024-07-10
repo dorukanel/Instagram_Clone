@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> _signUp() async {
+ /* Future<void> _signUp() async {
     try {
       final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print("Error signing up: $e");
       // Show error message
     }
-  }
+  }*/ // LOOK IF USED OR NOT 
   Future<void> _login() async {
     try {
       final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/insta_login_bg.png"),
             fit: BoxFit.cover,
@@ -68,8 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.abc, size: 100),
-                Text(
+                const Icon(Icons.abc, size: 100),
+                const Text(
                   "Hello Again!",
                   style: TextStyle(
                     fontSize: 32,
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
@@ -104,20 +104,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed:
                     _login,
 
-                  child: Text("Login"),
+                  child: const Text("Login"),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don't have an account? ",
                         style: TextStyle(
                           fontSize: 14,
@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             MaterialPageRoute(builder: (context) => Signup()),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           "Sign Up",
                           style: TextStyle(
                             fontSize: 20,
