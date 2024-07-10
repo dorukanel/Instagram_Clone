@@ -8,11 +8,13 @@ class AuthService {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
-      print("Signed up user: ${user?.uid}");
+      // ignore: avoid_print
+      //print("Signed up user: ${user?.uid}");
       // Optionally navigate to the home screen after successful signup
       // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
     } catch (e) {
-      print(e.toString());
+      // ignore: avoid_print
+      //print(e.toString());
       // Handle errors here, e.g., show a dialog or a Snackbar
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sample/pages/signup_screen.dart';
+import 'package:sample/pages/home_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       var user = userCredential.user;
       print("User logged in successfully: ${user!.uid}");
       // Here you can navigate to the home page or dashboard
-      // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
     } catch (e) {
       print("Error logging in: $e");
       // Optionally show an error message to the user

@@ -2,8 +2,7 @@ import 'login_screen.dart';
 import 'package:sample/services/auth_service.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-//import 'package:google_fonts/google_fonts.dart';
-import 'package:sample/pages/login_screen.dart';
+
 
 class Signup extends StatelessWidget {
   Signup({super.key});
@@ -14,7 +13,7 @@ class Signup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF841AF9), // colorzilla-> basina 0xFF
         resizeToAvoidBottomInset: true,
         bottomNavigationBar: _signin(context),
         appBar: AppBar(
@@ -51,7 +50,7 @@ class Signup extends StatelessWidget {
           ),
         ));
   }
-//12321
+
   Widget _emailAddress() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -71,7 +70,7 @@ class Signup extends StatelessWidget {
           controller: _emailController,
           decoration: InputDecoration(
               filled: true,
-              hintText: 'dorukanelveris@gmail.com',
+              hintText: 'dorukanelveris@hotmail.com',
               hintStyle: const TextStyle(
                   color: Color(0xff6A6A6A),
                   fontWeight: FontWeight.normal,
@@ -116,12 +115,16 @@ class Signup extends StatelessWidget {
 
   Widget _signup(BuildContext context) {
     return ElevatedButton(
+
       style: ElevatedButton.styleFrom(
+
         backgroundColor: const Color(0xff0D6EFD),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
+
         ),
-        minimumSize: const Size(double.infinity, 60),
+        alignment: Alignment.center,
+        minimumSize:  Size(double.infinity, 60),
         elevation: 0,
       ),
       onPressed: () async {
@@ -130,24 +133,32 @@ class Signup extends StatelessWidget {
             password: _passwordController.text,
             context: context);
       },
-      child: const Text("Sign Up"),
+      child: const Text("Sign Up",style: TextStyle(color: Colors.white,fontSize: 16),),
     );
   }
 
   Widget _signin(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
+
       child: RichText(
           textAlign: TextAlign.center,
           text: TextSpan(children: [
-            const TextSpan(
-              text: "Already Have Account? ",
+             TextSpan(
+              text: "I already have an account ",
               style: TextStyle(
-                  color: Color(0xff6A6A6A),
-                  fontWeight: FontWeight.normal,
+                  color: Colors.cyanAccent,
+                  fontWeight: FontWeight.bold,
                   fontSize: 16),
-            ),
-            TextSpan(
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                }),
+
+           /* TextSpan(
                 text: "Log In",
                 style: const TextStyle(
                     color: Color(0xff1A1D1E),
@@ -159,7 +170,7 @@ class Signup extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => LoginScreen()),
                     );
-                  }),
+                  }),*/
           ])),
     );
   }
