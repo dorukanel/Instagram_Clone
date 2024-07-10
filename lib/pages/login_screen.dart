@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print("Error signing up: $e");
       // Show error message
     }
-  }*/ // LOOK IF USED OR NOT 
+  }*/ // LOOK IF USED OR NOT
   Future<void> _login() async {
     try {
       final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
