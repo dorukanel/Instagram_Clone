@@ -4,7 +4,6 @@ import 'pages/login_screen.dart';
 import 'pages/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // bunsuz 8928312 tane hata  veriyor
@@ -27,19 +26,17 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
             elevation: 1,
             color: Colors.white,
-            iconTheme: IconThemeData(color: Color.fromRGBO(40, 40, 40, 1))),
+            iconTheme: IconThemeData(color: Color.fromRGBO(40, 40, 40, 1))
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) =>  LoginScreen(),
-        '/signup': (context) =>  Signup(),
-        '/home': (context) =>HomePage(),
+        '/': (context) => LoginScreen(),
+        '/signup': (context) => Signup(),
+        '/home': (context) => HomePage(),
       },
-
     );
   }
 }
-
-

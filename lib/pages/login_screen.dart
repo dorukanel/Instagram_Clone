@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sample/pages/signup_screen.dart';
 import 'package:sample/pages/home_page.dart';
 
+import '../Validator.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -15,8 +17,45 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  String? _emailError;
+  String? _passwordError;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.addListener(() {
+      final result = Validator.validateEmail(_emailController.text);
+      setState(() {
+        _emailError = result;
+      });
+    });
+    _passwordController.addListener(() {
+      final result = Validator.validatePassword(_passwordController.text);
+      setState(() {
+        _passwordError = result;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   Future<void> _login() async {
+    // Doğrulama: Email ve şifre hatalarını kontrol et
+    if (_emailError != null || _passwordError != null || _emailController.text.isEmpty || _passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Lütfen hataları düzeltin ve tekrar deneyin.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return; // Eğer hata varsa, işlemi burada kes
+    }
+
     try {
       final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
@@ -24,12 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       var user = userCredential.user;
       print("User logged in successfully: ${user!.uid}");
-      // Here you can navigate to the home page or dashboard
-     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
+      // Başarılı giriş sonrası ana sayfaya yönlendir
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
     } catch (e) {
       print("Error logging in: $e");
-      // Optionally show an error message to the user
-      // For example, you can use a SnackBar to show error messages
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Failed to login: ${e.toString()}'),
@@ -38,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide.none,
                     ),
+                    errorText: _emailError,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -89,13 +128,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide.none,
                     ),
+                    errorText: _passwordError,
                   ),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed:
-                    _login,
-
+                  onPressed: _login,
                   child: const Text("Login"),
                 ),
                 const SizedBox(height: 10),
@@ -127,7 +165,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       )
-
                     ],
                   ),
                 )
@@ -136,8 +173,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-
     );
-
   }
 }
