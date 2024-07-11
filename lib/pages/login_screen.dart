@@ -15,20 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
- /* Future<void> _signUp() async {
-    try {
-      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      var user = userCredential.user;
-      print("User registered successfully: ${user!.uid}");
-      // Navigate to another screen or show success message
-    } catch (e) {
-      print("Error signing up: $e");
-      // Show error message
-    }
-  }*/ // LOOK IF USED OR NOT
+
   Future<void> _login() async {
     try {
       final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
