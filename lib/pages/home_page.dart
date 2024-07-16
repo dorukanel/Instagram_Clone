@@ -37,14 +37,24 @@ class _HomePageState extends State<HomePage> {
     "assets/images/post_9.jpg",
     "assets/images/post_10.jpg"
   ];
+
   Future<void> onRefresh()async{
     await Future.delayed(Duration(seconds: 1));
   }
+  final List<Widget> pages = [
+    Center(child: Text('Home Page')), // Ana sayfa widget
+    Center(child: Text('Search Page')), // Arama sayfası widget
+    Center(child: Text('Video Page')), // Video sayfası widget
+    Center(child: Text('Travel Page')), // Seyahat sayfası widget
+    ProfilePage(), // Profil sayfası
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
           title: Image.asset("assets/images/insta_title.png", height: 200, width: 150),
+          automaticallyImplyLeading: false,
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.add_circle_outline)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),

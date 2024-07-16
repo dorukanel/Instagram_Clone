@@ -1,10 +1,7 @@
 import 'login_screen.dart';
 import 'package:sample/services/auth_service.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../Validator.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sample/services/firestore_service.dart';
 
 class Signup extends StatefulWidget {
   Signup({super.key});
@@ -28,6 +25,7 @@ class _SignupState extends State<Signup> {
   @override
   void initState() {
     super.initState();
+
     _emailController.addListener(() {
       setState(() {
         _emailError = Validator.validateEmail(_emailController.text);
@@ -41,19 +39,19 @@ class _SignupState extends State<Signup> {
     _phoneController.addListener(() {
       setState(() {
         _phoneError = Validator.validatePhone(
-            _phoneController.text); // Telefon numarası için doğrulama
+            _phoneController.text);
       });
     });
     _firstNameController.addListener(() {
       setState(() {
-        _firstNameError = Validator.validateFirstName(_firstNameController
-            .text); // isim için doğrulama
+        _firstNameError = Validator.validateFirstName(
+            _firstNameController.text);
       });
     });
     _lastNameController.addListener(() {
       setState(() {
-        _lastNameError = Validator.validateLastName(_lastNameController
-            .text); // soyisim için doğrulama
+        _lastNameError = Validator.validateLastName(
+            _lastNameController.text);
       });
     });
   }
@@ -233,8 +231,7 @@ class _SignupState extends State<Signup> {
                 backgroundColor: Colors.red,
               ),
             );
-          }
-      );
+          });
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -244,5 +241,4 @@ class _SignupState extends State<Signup> {
       );
     }
   }
-
 }
